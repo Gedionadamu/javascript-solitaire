@@ -1,7 +1,7 @@
 function createCard(num, suit) {
     let centerSuit = []
 
-    if (typeof num == "number") {
+    if (parseInt(num) !== NaN) {
         for (let i = 0; i < num; i++) {
             centerSuit.push(`<div class="center-suits">${suit.code}</div>`)
         }
@@ -29,6 +29,9 @@ function createCard(num, suit) {
 
     const el = document.querySelector(".waste-container")
     const filledCard = document.createElement("div")
+    filledCard.setAttribute("draggable", "true")
+    filledCard.classList.add("moveable-card")
+    filledCard.id = num + suit.name
     filledCard.innerHTML = cardTemp
     el.append(filledCard)
     return filledCard
